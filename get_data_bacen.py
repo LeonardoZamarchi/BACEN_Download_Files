@@ -1,6 +1,19 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
+from datetime import datetime, date
+
+
+
+def age(dt_assoc):
+    try:
+        dt_assoc = datetime.strptime(dt_assoc, "%Y-%m-%d").date()
+        today = date.today()
+        return today.year - dt_assoc.year - ((today.month, 
+                                        today.day) < (dt_assoc.month, 
+                                                        dt_assoc.day))
+    except:
+        return ''
 
 def busca_cooperados_coop(chrome):
     time.sleep(3)
